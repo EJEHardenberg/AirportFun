@@ -1,10 +1,17 @@
-<<html>
+<html>
 <head>
 <title>airport</title>
 <style>
 #plane{
 background: black;
 color: white;
+}
+.Dot{
+position: absolute;
+background: green;
+height: 2px;
+width: 2px;
+padding: 2px;
 }
 </style>
 </head>
@@ -14,3 +21,14 @@ color: white;
 
 <div id="plane">
 </div>
+
+<script>
+SetInterval( function(   
+  navigator.geolocation.getCurrentPosition(function(pos){
+    var dot = document.createElement("div")
+    dot.className ="Dot"
+    dot.style.left = pos.coords.latitude
+    dot.style.top = pos.coords.longitude
+    document.getElementById(plane).appendChild(dot)
+  })  ), 3000)  
+</script>
